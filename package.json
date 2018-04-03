@@ -1,0 +1,21 @@
+{
+  "name": "lexeme",
+  "version": "0.0.1",
+  "description": "A lexical analyzer that turns CSS into parser friendly tokens.",
+  "main": "src/index.js",
+  "author": "Callum Hart",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/callum-hart/lexeme.git"
+  },
+  "dependencies": {
+    "prettier": "^1.7.0"
+  },
+  "devDependencies": {
+    "jest": "^21.1.0"
+  }
+}

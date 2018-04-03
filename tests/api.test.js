@@ -1,0 +1,196 @@
+const { tokenize } = require('../src/index');
+
+
+const CSS = `.home { position: relative; height: 100%; } .home aside { position: fixed; width: 280px; top: 0; bottom: 0; } .home main { position: absolute; left: 340px; right: 0; height: 100%; } .home nav { display: none; } .home .home-viewport { position: absolute; height: 480px; width: 100%; top: 50%; margin-top: -240px; } .home .home-viewport .home-list { float: left; } .home .home-viewport .home-list.l-h-s { width: 40%; } .home .home-viewport .home-list.r-h-s { width: 60%; } @media screen and (max-height: 527px) { .home aside { overflow: auto; } .home .home-viewport { top: 24px; margin: 0; min-height: 400px; } } @media screen and (max-width: 1070px) { .home .home-viewport { top: 24px; margin: 0; width: 100%; } } @media screen and (max-width: 840px) { .home aside { display: none; } .home main { position: static; padding-top: 180px; } .home .home-viewport { position: static; } .home nav { display: block; } .home nav .nav-links { display: none; } .home-footer { display: block; } }`;
+
+
+test('Get all tokens `tokens()`', () => {
+  expect(tokenize(CSS).tokens()).toEqual([
+    ["SELECTOR", ".home", [1]],
+    ["BRACE_OPEN", "{", [1, 7]],
+    ["DECLARATION", "position: relative;", [2]],
+    ["DECLARATION", "height: 100%;", [3]],
+    ["BRACE_CLOSE", "}", [4]],
+    ["SELECTOR", ".home aside", [5]],
+    ["BRACE_OPEN", "{", [5, 13]],
+    ["DECLARATION", "position: fixed;", [6]],
+    ["DECLARATION", "width: 280px;", [7]],
+    ["DECLARATION", "top: 0;", [8]],
+    ["DECLARATION", "bottom: 0;", [9]],
+    ["BRACE_CLOSE", "}", [10]],
+    ["SELECTOR", ".home main", [11]],
+    ["BRACE_OPEN", "{", [11, 12]],
+    ["DECLARATION", "position: absolute;", [12]],
+    ["DECLARATION", "left: 340px;", [13]],
+    ["DECLARATION", "right: 0;", [14]],
+    ["DECLARATION", "height: 100%;", [15]],
+    ["BRACE_CLOSE", "}", [16]],
+    ["SELECTOR", ".home nav", [17]],
+    ["BRACE_OPEN", "{", [17, 11]],
+    ["DECLARATION", "display: none;", [18]],
+    ["BRACE_CLOSE", "}", [19]],
+    ["SELECTOR", ".home .home-viewport", [20]],
+    ["BRACE_OPEN", "{", [20, 22]],
+    ["DECLARATION", "position: absolute;", [21]],
+    ["DECLARATION", "height: 480px;", [22]],
+    ["DECLARATION", "width: 100%;", [23]],
+    ["DECLARATION", "top: 50%;", [24]],
+    ["DECLARATION", "margin-top: -240px;", [25]],
+    ["BRACE_CLOSE", "}", [26]],
+    ["SELECTOR", ".home .home-viewport .home-list", [27]],
+    ["BRACE_OPEN", "{", [27, 33]],
+    ["DECLARATION", "float: left;", [28]],
+    ["BRACE_CLOSE", "}", [29]],
+    ["SELECTOR", ".home .home-viewport .home-list.l-h-s", [30]],
+    ["BRACE_OPEN", "{", [30, 39]],
+    ["DECLARATION", "width: 40%;", [31]],
+    ["BRACE_CLOSE", "}", [32]],
+    ["SELECTOR", ".home .home-viewport .home-list.r-h-s", [33]],
+    ["BRACE_OPEN", "{", [33, 39]],
+    ["DECLARATION", "width: 60%;", [34]],
+    ["BRACE_CLOSE", "}", [35]],
+    ["MEDIA_QUERY", "@media screen and (max-height: 527px)", [36]],
+    ["BRACE_OPEN", "{", [36, 39]],
+    ["SELECTOR", ".home aside", [37]],
+    ["BRACE_OPEN", "{", [37, 13]],
+    ["DECLARATION", "overflow: auto;", [38]],
+    ["BRACE_CLOSE", "}", [39]],
+    ["SELECTOR", ".home .home-viewport", [40]],
+    ["BRACE_OPEN", "{", [40, 22]],
+    ["DECLARATION", "top: 24px;", [41]],
+    ["DECLARATION", "margin: 0;", [42]],
+    ["DECLARATION", "min-height: 400px;", [43]],
+    ["BRACE_CLOSE", "}", [44]],
+    ["BRACE_CLOSE", "}", [45]],
+    ["MEDIA_QUERY", "@media screen and (max-width: 1070px)", [46]],
+    ["BRACE_OPEN", "{", [46, 39]],
+    ["SELECTOR", ".home .home-viewport", [47]],
+    ["BRACE_OPEN", "{", [47, 22]],
+    ["DECLARATION", "top: 24px;", [48]],
+    ["DECLARATION", "margin: 0;", [49]],
+    ["DECLARATION", "width: 100%;", [50]],
+    ["BRACE_CLOSE", "}", [51]],
+    ["BRACE_CLOSE", "}", [52]],
+    ["MEDIA_QUERY", "@media screen and (max-width: 840px)", [53]],
+    ["BRACE_OPEN", "{", [53, 38]],
+    ["SELECTOR", ".home aside", [54]],
+    ["BRACE_OPEN", "{", [54, 13]],
+    ["DECLARATION", "display: none;", [55]],
+    ["BRACE_CLOSE", "}", [56]],
+    ["SELECTOR", ".home main", [57]],
+    ["BRACE_OPEN", "{", [57, 12]],
+    ["DECLARATION", "position: static;", [58]],
+    ["DECLARATION", "padding-top: 180px;", [59]],
+    ["BRACE_CLOSE", "}", [60]],
+    ["SELECTOR", ".home .home-viewport", [61]],
+    ["BRACE_OPEN", "{", [61, 22]],
+    ["DECLARATION", "position: static;", [62]],
+    ["BRACE_CLOSE", "}", [63]],
+    ["SELECTOR", ".home nav", [64]],
+    ["BRACE_OPEN", "{", [64, 11]],
+    ["DECLARATION", "display: block;", [65]],
+    ["BRACE_CLOSE", "}", [66]],
+    ["SELECTOR", ".home nav .nav-links", [67]],
+    ["BRACE_OPEN", "{", [67, 22]],
+    ["DECLARATION", "display: none;", [68]],
+    ["BRACE_CLOSE", "}", [69]],
+    ["SELECTOR", ".home-footer", [70]],
+    ["BRACE_OPEN", "{", [70, 14]],
+    ["DECLARATION", "display: block;", [71]],
+    ["BRACE_CLOSE", "}", [72]],
+    ["BRACE_CLOSE", "}", [73]]
+  ]);
+});
+
+
+test('Get all selectors `selectors()`', () => {
+  expect(tokenize(CSS).selectors()).toEqual([
+    ["SELECTOR", ".home", [1]],
+    ["SELECTOR", ".home aside", [5]],
+    ["SELECTOR", ".home main", [11]],
+    ["SELECTOR", ".home nav", [17]],
+    ["SELECTOR", ".home .home-viewport", [20]],
+    ["SELECTOR", ".home .home-viewport .home-list", [27]],
+    ["SELECTOR", ".home .home-viewport .home-list.l-h-s", [30]],
+    ["SELECTOR", ".home .home-viewport .home-list.r-h-s", [33]],
+    ["SELECTOR", ".home aside", [37]],
+    ["SELECTOR", ".home .home-viewport", [40]],
+    ["SELECTOR", ".home .home-viewport", [47]],
+    ["SELECTOR", ".home aside", [54]],
+    ["SELECTOR", ".home main", [57]],
+    ["SELECTOR", ".home .home-viewport", [61]],
+    ["SELECTOR", ".home nav", [64]],
+    ["SELECTOR", ".home nav .nav-links", [67]],
+    ["SELECTOR", ".home-footer", [70]]
+  ]);
+});
+
+
+test('Get all declarations `declarations()`', () => {
+  expect(tokenize(CSS).declarations()).toEqual([
+    ["DECLARATION", "position: relative;", [2]],
+    ["DECLARATION", "height: 100%;", [3]],
+    ["DECLARATION", "position: fixed;", [6]],
+    ["DECLARATION", "width: 280px;", [7]],
+    ["DECLARATION", "top: 0;", [8]],
+    ["DECLARATION", "bottom: 0;", [9]],
+    ["DECLARATION", "position: absolute;", [12]],
+    ["DECLARATION", "left: 340px;", [13]],
+    ["DECLARATION", "right: 0;", [14]],
+    ["DECLARATION", "height: 100%;", [15]],
+    ["DECLARATION", "display: none;", [18]],
+    ["DECLARATION", "position: absolute;", [21]],
+    ["DECLARATION", "height: 480px;", [22]],
+    ["DECLARATION", "width: 100%;", [23]],
+    ["DECLARATION", "top: 50%;", [24]],
+    ["DECLARATION", "margin-top: -240px;", [25]],
+    ["DECLARATION", "float: left;", [28]],
+    ["DECLARATION", "width: 40%;", [31]],
+    ["DECLARATION", "width: 60%;", [34]],
+    ["DECLARATION", "overflow: auto;", [38]],
+    ["DECLARATION", "top: 24px;", [41]],
+    ["DECLARATION", "margin: 0;", [42]],
+    ["DECLARATION", "min-height: 400px;", [43]],
+    ["DECLARATION", "top: 24px;", [48]],
+    ["DECLARATION", "margin: 0;", [49]],
+    ["DECLARATION", "width: 100%;", [50]],
+    ["DECLARATION", "display: none;", [55]],
+    ["DECLARATION", "position: static;", [58]],
+    ["DECLARATION", "padding-top: 180px;", [59]],
+    ["DECLARATION", "position: static;", [62]],
+    ["DECLARATION", "display: block;", [65]],
+    ["DECLARATION", "display: none;", [68]],
+    ["DECLARATION", "display: block;", [71]]
+  ]);
+});
+
+
+test('Get all media queries `mediaQueries()`', () => {
+  expect(tokenize(CSS).mediaQueries()).toEqual([
+    ["MEDIA_QUERY", "@media screen and (max-height: 527px)", [36]],
+    ["MEDIA_QUERY", "@media screen and (max-width: 1070px)", [46]],
+    ["MEDIA_QUERY", "@media screen and (max-width: 840px)", [53]]
+  ]);
+});
+
+
+test('Get all rulesets `rulesetsAsObjects()`', () => {
+  expect(tokenize(CSS).rulesetsAsObjects()).toEqual([
+    {"declarations": ["position: relative;", "height: 100%;"], "selector": ".home"},
+    {"declarations": ["position: fixed;", "width: 280px;", "top: 0;", "bottom: 0;"], "selector": ".home aside"},
+    {"declarations": ["position: absolute;", "left: 340px;", "right: 0;", "height: 100%;"], "selector": ".home main"},
+    {"declarations": ["display: none;"], "selector": ".home nav"},
+    {"declarations": ["position: absolute;", "height: 480px;", "width: 100%;", "top: 50%;", "margin-top: -240px;"], "selector": ".home .home-viewport"},
+    {"declarations": ["float: left;"], "selector": ".home .home-viewport .home-list"},
+    {"declarations": ["width: 40%;"], "selector": ".home .home-viewport .home-list.l-h-s"},
+    {"declarations": ["width: 60%;"], "selector": ".home .home-viewport .home-list.r-h-s"},
+    {"declarations": ["overflow: auto;"], "selector": ".home aside"},
+    {"declarations": ["top: 24px;", "margin: 0;", "min-height: 400px;"], "selector": ".home .home-viewport"},
+    {"declarations": ["top: 24px;", "margin: 0;", "width: 100%;"], "selector": ".home .home-viewport"},
+    {"declarations": ["display: none;"], "selector": ".home aside"},
+    {"declarations": ["position: static;", "padding-top: 180px;"], "selector": ".home main"},
+    {"declarations": ["position: static;"], "selector": ".home .home-viewport"},
+    {"declarations": ["display: block;"], "selector": ".home nav"},
+    {"declarations": ["display: none;"], "selector": ".home nav .nav-links"},
+    {"declarations": ["display: block;"], "selector": ".home-footer"}]);
+});
